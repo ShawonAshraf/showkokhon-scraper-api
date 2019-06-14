@@ -16,7 +16,7 @@ public class Fetcher {
             return new ArrayList<Movie>();
         } else {
             var scraper = new StarCineplexScraper();
-            var parsed = scraper.parse(res.DATA, location);
+            var parsed = scraper.parse(res.MSG, location);
             return parsed;
         }
     }

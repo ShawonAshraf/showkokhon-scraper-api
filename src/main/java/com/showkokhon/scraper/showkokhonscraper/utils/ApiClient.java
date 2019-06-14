@@ -29,8 +29,8 @@ public class ApiClient {
     }
 
     /**
-     * Fetch DATA from the API
-     * returns DATA as a BasicScraperResponse
+     * Fetch MSG from the API
+     * returns MSG as a BasicScraperResponse
      */
     public BasicScraperResponse fetch(String location) {
         String body = String.format("--%s\r\nContent-Disposition: form-data; name=\"%s\"\r\n\r\n%s\r\n--%s--",
