@@ -19,7 +19,7 @@ public class ScraperController {
     }
 
     @RequestMapping(value = "/scraper/v1/schedule/", method = RequestMethod.GET)
-    public BasicScraperResponse getAllSchedule(@RequestParam int cinemaId) {
+    public ScraperResponseWithMovies getScheduleByCinemaId(@RequestParam int cinemaId) {
 
         ScraperResponseWithMovies response = null;
 
@@ -37,15 +37,11 @@ public class ScraperController {
             case 1:
                 // blockbuster
                 response = new ScraperResponseWithMovies(200, "Feature not ready yet",
-                        new ArrayList<Movie>());
+                        null);
                 return response;
             default:
-                break;
-
+                response = new ScraperResponseWithMovies(404, "Invalid Id", null);
+                return response;
         }
-
-
-
-        return response;
     }
 }
