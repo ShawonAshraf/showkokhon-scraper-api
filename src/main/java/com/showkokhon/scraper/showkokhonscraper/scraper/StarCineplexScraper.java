@@ -82,11 +82,11 @@ public class StarCineplexScraper {
                  */
                 if (!map.containsKey(name)) {
                     var m = new Movie(name);
-                    m.getLocationWiseTimes().put(date, loc);
+                    m.getSchedule().put(date, loc);
                     map.put(name, m);
                 } else {
                     var m = map.get(name);
-                    m.getLocationWiseTimes().put(date, loc);
+                    m.getSchedule().put(date, loc);
                 }
             }
         }
