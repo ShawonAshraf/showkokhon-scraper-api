@@ -1,13 +1,10 @@
 package com.showkokhon.scraper.showkokhonscraper.controller;
 
 import com.showkokhon.scraper.showkokhonscraper.model.BasicScraperResponse;
-import com.showkokhon.scraper.showkokhonscraper.model.Movie;
 import com.showkokhon.scraper.showkokhonscraper.model.ScraperResponseWithMovies;
 import com.showkokhon.scraper.showkokhonscraper.utils.Fetcher;
-import com.showkokhon.scraper.showkokhonscraper.utils.ListMerger;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 
 @CrossOrigin
 @RestController
@@ -27,7 +24,7 @@ public class ScraperController {
                 // star cineplex
                 var movies = Fetcher.getAllStarCineplexMovies();
                 response = new ScraperResponseWithMovies(200, "OK", movies);
-                
+
                 return response;
 
             case 1:
@@ -39,5 +36,11 @@ public class ScraperController {
                 response = new ScraperResponseWithMovies(404, "Invalid Id", null);
                 return response;
         }
+    }
+
+    @RequestMapping(value = "/scraper/v1/schedule/all", method = RequestMethod.GET)
+    public ScraperResponseWithMovies getAllSchedule() {
+        var movies = Fetcher.getAllMovies();
+        return new ScraperResponseWithMovies(200, "OK", movies);
     }
 }
