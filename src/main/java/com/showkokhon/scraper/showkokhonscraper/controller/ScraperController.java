@@ -1,5 +1,6 @@
 package com.showkokhon.scraper.showkokhonscraper.controller;
 
+import com.showkokhon.scraper.showkokhonscraper.data.Constants;
 import com.showkokhon.scraper.showkokhonscraper.model.BasicScraperResponse;
 import com.showkokhon.scraper.showkokhonscraper.model.ScraperResponseWithMovies;
 import com.showkokhon.scraper.showkokhonscraper.utils.Fetcher;
@@ -29,6 +30,7 @@ public class ScraperController {
 
             case 1:
                 // blockbuster
+                // TODO : implement when blockbuster scraper is ready
                 response = new ScraperResponseWithMovies(200, null);
                 return response;
             default:
@@ -41,5 +43,24 @@ public class ScraperController {
     public ScraperResponseWithMovies getAllSchedule() {
         var movies = Fetcher.getAllMovies();
         return new ScraperResponseWithMovies(200, movies);
+    }
+
+    @RequestMapping(value = "/scraper/v1/schedule/individual/", method = RequestMethod.GET)
+    public ScraperResponseWithMovies getScheduleByLocation(@RequestParam int cinemaId, @RequestParam String location) {
+        if (cinemaId == 0) {
+            switch (location) {
+                case "bcity":
+                    var bcityMovies = Fetcher.getStarCineplexMoviesByLocation(Constants.bashundharaCity);
+                    return new ScraperResponseWithMovies(200, bcityMovies);
+                case "ss":
+                    var ssMovies = Fetcher.getStarCineplexMoviesByLocation(Constants.shimantoShambhar);
+                    return new ScraperResponseWithMovies(200, ssMovies);
+                default:
+                    return new ScraperResponseWithMovies(404, null);
+            }
+        } else {
+            // TODO : implement when blockbuster scraper is ready
+            return new ScraperResponseWithMovies(200, null);
+        }
     }
 }
