@@ -49,13 +49,13 @@ public class ApiClient {
 
 
             var response = res.getStatus() == 200 ?
-                    new BasicScraperResponse(res.getStatus(), res.getBody()) : new BasicScraperResponse(
-                            res.getStatus(), "Couldn't Fetch Data Due To WebSite Error");
+                    new BasicScraperResponse(res.getStatus(), res.getStatusText(), res.getBody()) : new BasicScraperResponse(
+                            res.getStatus(), "Couldn't Fetch Data Due To WebSite Error", null);
 
             return response;
         } catch (Exception e) {
             e.printStackTrace();
-            return new BasicScraperResponse(404, "Couldn't Fetch Data Due TO WebSite Error");
+            return new BasicScraperResponse(404, "Couldn't Fetch Data Due TO WebSite Error", null);
         }
     }
 

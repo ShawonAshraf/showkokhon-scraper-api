@@ -12,7 +12,7 @@ public class ScraperController {
 
     @RequestMapping(value = "/scraper/v1/", method = RequestMethod.GET)
     public BasicScraperResponse root() {
-        return new BasicScraperResponse(200, "Green All across the board!");
+        return new BasicScraperResponse(200, "Green All across the board!", null);
     }
 
     @RequestMapping(value = "/scraper/v1/schedule/", method = RequestMethod.GET)
