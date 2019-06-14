@@ -28,4 +28,11 @@ public class Fetcher {
         var merged = ListMerger.mergeLists(bcity, ss);
         return merged;
     }
+
+    public static ArrayList<Movie> getAllMovies() {
+        var star = getAllStarCineplexMovies();
+
+        // for now
+        return star;
+    }
 }
