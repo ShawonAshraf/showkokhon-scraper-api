@@ -6,7 +6,7 @@ import com.showkokhon.scraper.showkokhonscraper.scraper.StarCineplexScraper;
 import java.util.ArrayList;
 
 public class Fetcher {
-    public static ArrayList<Movie> getStarCineplexMovieByLocation(String location) {
+    public static ArrayList<Movie> getStarCineplexMoviesByLocation(String location) {
         var client = new ApiClient();
         var res = client.fetch(location);
 
@@ -19,5 +19,13 @@ public class Fetcher {
             var parsed = scraper.parse(res.MSG, location);
             return parsed;
         }
+    }
+
+    public static ArrayList<Movie> getAllStarCineplexMovies() {
+        var bcity = Fetcher.getStarCineplexMoviesByLocation("Bashundhara Shopping Mall, Panthapath");
+        var ss = Fetcher.getStarCineplexMoviesByLocation("Shimanto Shambhar, Dhanmondi 2");
+
+        var merged = ListMerger.mergeLists(bcity, ss);
+        return merged;
     }
 }
