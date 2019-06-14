@@ -40,8 +40,8 @@ public class ListMerger {
                      */
                     var movieToMergeWith = merged.get(i);
 
-                    sameMovie.getLocationWiseTimes().forEach((date, loc) -> {
-                        var map = movieToMergeWith.getLocationWiseTimes();
+                    sameMovie.getSchedule().forEach((date, loc) -> {
+                        var map = movieToMergeWith.getSchedule();
 
                         /**
                          * check if date exists
