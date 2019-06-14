@@ -23,17 +23,16 @@ public class ScraperController {
             case 0:
                 // star cineplex
                 var movies = Fetcher.getAllStarCineplexMovies();
-                response = new ScraperResponseWithMovies(200, "OK", movies);
+                response = new ScraperResponseWithMovies(200, movies);
 
                 return response;
 
             case 1:
                 // blockbuster
-                response = new ScraperResponseWithMovies(200, "Feature not ready yet",
-                        null);
+                response = new ScraperResponseWithMovies(200, null);
                 return response;
             default:
-                response = new ScraperResponseWithMovies(404, "Invalid Id", null);
+                response = new ScraperResponseWithMovies(404, null);
                 return response;
         }
     }
@@ -41,6 +40,6 @@ public class ScraperController {
     @RequestMapping(value = "/scraper/v1/schedule/all", method = RequestMethod.GET)
     public ScraperResponseWithMovies getAllSchedule() {
         var movies = Fetcher.getAllMovies();
-        return new ScraperResponseWithMovies(200, "OK", movies);
+        return new ScraperResponseWithMovies(200, movies);
     }
 }
