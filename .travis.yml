@@ -3,4 +3,3 @@ jdk: openjdk11
 
 script:
   - ./mvnw clean package
-  - java -jar target/showkokhon-scraper-0.0.1-SNAPSHOT.war
