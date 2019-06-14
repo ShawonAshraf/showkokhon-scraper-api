@@ -1,5 +1,6 @@
 package com.showkokhon.scraper.showkokhonscraper.utils;
 
+import com.showkokhon.scraper.showkokhonscraper.data.Data;
 import com.showkokhon.scraper.showkokhonscraper.model.Movie;
 import com.showkokhon.scraper.showkokhonscraper.scraper.StarCineplexScraper;
 
@@ -22,8 +23,8 @@ public class Fetcher {
     }
 
     public static ArrayList<Movie> getAllStarCineplexMovies() {
-        var bcity = Fetcher.getStarCineplexMoviesByLocation("Bashundhara Shopping Mall, Panthapath");
-        var ss = Fetcher.getStarCineplexMoviesByLocation("Shimanto Shambhar, Dhanmondi 2");
+        var bcity = Fetcher.getStarCineplexMoviesByLocation(Data.bcity);
+        var ss = Fetcher.getStarCineplexMoviesByLocation(Data.ss);
 
         var merged = ListMerger.mergeLists(bcity, ss);
         return merged;
