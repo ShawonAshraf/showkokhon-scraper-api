@@ -1,4 +1,6 @@
 # showkokhon-scraper-api
+[![Build Status](https://travis-ci.com/ShawonAshraf/showkokhon-scraper-api.svg?branch=master)](https://travis-ci.com/ShawonAshraf/showkokhon-scraper-api)
+
 Scraps movie schedules from Star Cineplex and Blockbuster Cinemas websites.
 
 ## Running locally
