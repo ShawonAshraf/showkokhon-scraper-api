@@ -69,10 +69,6 @@ public class ShowkokhonScraperApplicationTests {
                 "04:35 PM, 07:10 PM, 07:30 PM]}}}}]";
     }
 
-//	@Test
-//	public void contextLoads() {
-//	}
-
     @Test
     public void scraperShouldReturnCorrectData() {
         initMockData();
