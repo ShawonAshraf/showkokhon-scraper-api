@@ -50,12 +50,12 @@ public class ApiClient {
 
             var response = res.getStatus() == 200 ?
                     new BasicScraperResponse(res.getStatus(), res.getBody()) : new BasicScraperResponse(
-                            res.getStatus(), "Couldn't Fetch Data Due WebSite Error");
+                            res.getStatus(), "Couldn't Fetch Data Due To WebSite Error");
 
             return response;
         } catch (Exception e) {
             e.printStackTrace();
-            return new BasicScraperResponse(404, "Couldn't Fetch Data Due WebSite Error");
+            return new BasicScraperResponse(404, "Couldn't Fetch Data Due TO WebSite Error");
         }
     }
 
