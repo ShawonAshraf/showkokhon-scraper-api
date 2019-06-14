@@ -7,26 +7,26 @@ public class Movie {
     /**
      * date -> location -> showTime map
      */
-    private HashMap<String, HashMap<String, ShowTimes>> locationWiseTimes;
+    private HashMap<String, HashMap<String, ShowTimes>> schedule;
 
     public Movie(String name) {
         this.name = name;
-        locationWiseTimes = new HashMap<>();
+        schedule = new HashMap<>();
     }
 
     public String getName() {
         return name;
     }
 
-    public HashMap<String, HashMap<String, ShowTimes>> getLocationWiseTimes() {
-        return locationWiseTimes;
+    public HashMap<String, HashMap<String, ShowTimes>> getSchedule() {
+        return schedule;
     }
 
     @Override
     public String toString() {
         return "Movie{" +
                 "name='" + name + '\'' +
-                ", locationWiseTimes=" + locationWiseTimes +
+                ", schedule=" + schedule +
                 '}';
     }
 }
