@@ -20,18 +20,14 @@ public class ScraperController {
 
     @RequestMapping(value = "/scraper/v1/schedule/", method = RequestMethod.GET)
     public ScraperResponseWithMovies getScheduleByCinemaId(@RequestParam int cinemaId) {
-
-        ScraperResponseWithMovies response = null;
+        ScraperResponseWithMovies response;
 
         switch (cinemaId) {
             case 0:
                 // star cineplex
-                var bcity = Fetcher.getStarCineplexMovieByLocation("Bashundhara Shopping Mall, Panthapath");
-                var ss = Fetcher.getStarCineplexMovieByLocation("Shimanto Shambhar, Dhanmondi 2");
-
-                var merged = ListMerger.mergeLists(bcity, ss);
-
-                response = new ScraperResponseWithMovies(200, "OK", merged);
+                var movies = Fetcher.getAllStarCineplexMovies();
+                response = new ScraperResponseWithMovies(200, "OK", movies);
+                
                 return response;
 
             case 1:
