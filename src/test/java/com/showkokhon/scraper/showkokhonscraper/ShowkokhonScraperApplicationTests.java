@@ -8,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
@@ -25,7 +24,6 @@ public class ShowkokhonScraperApplicationTests {
     /**
      * Init mock data
      */
-    @BeforeAll
     public static void initMockData() {
         var stringBuilder = new StringBuilder();
         stringBuilder.append("<h2 class=\"title_page\">")
@@ -65,7 +63,7 @@ public class ShowkokhonScraperApplicationTests {
                 .append("    </div>");
 
         sampleResponseString = stringBuilder.toString();
-        sampleParsedData = "[Movie{name='Shazam! (3D)', locationWiseTimes={Thursday, " +
+        sampleParsedData = "[Movie{name='Shazam! (3D)', schedule={Thursday, " +
                 "April 18, 2019={Bashundhara Shopping Mall, " +
                 "Panthapath=ShowTimes{showTimes=[10:50 AM, 01:40 PM, 01:50 PM, " +
                 "04:35 PM, 07:10 PM, 07:30 PM]}}}}]";
@@ -75,30 +73,14 @@ public class ShowkokhonScraperApplicationTests {
 //	public void contextLoads() {
 //	}
 
-    /**
-     * Rigorous Test :-)
-     */
     @Test
-    public void clientReturnsResponseForBCity() {
-        var client = new ApiClient();
+    public void scraperShouldReturnCorrectData() {
+        initMockData();
 
-        var response = client.fetch("Bashundhara Shopping Mall, Panthapath");
-        var status = response.STATUS_CODE;
-        var message = response.MSG;
+        var scraper = new StarCineplexScraper();
+        var parsed = scraper.parse(sampleResponseString, "Bashundhara Shopping Mall, Panthapath");
 
-        assertEquals(200, status);
-        assertEquals("OK", message);
+        assertEquals(parsed.toString(), sampleParsedData);
     }
 
-    @Test
-    public void clientReturnsResponseForShimantoShambhar() {
-        var client = new ApiClient();
-
-        var response = client.fetch("Shimanto Shambhar, Dhanmondi 2");
-        var status = response.STATUS_CODE;
-        var message = response.MSG;
-
-        assertEquals(200, status);
-        assertEquals("OK", message);
-    }
 }
