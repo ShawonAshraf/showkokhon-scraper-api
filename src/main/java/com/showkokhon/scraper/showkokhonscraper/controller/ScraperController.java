@@ -5,13 +5,11 @@ import com.showkokhon.scraper.showkokhonscraper.model.Movie;
 import com.showkokhon.scraper.showkokhonscraper.model.ScraperResponseWithMovies;
 import com.showkokhon.scraper.showkokhonscraper.utils.Fetcher;
 import com.showkokhon.scraper.showkokhonscraper.utils.ListMerger;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
+@CrossOrigin
 @RestController
 public class ScraperController {
 
