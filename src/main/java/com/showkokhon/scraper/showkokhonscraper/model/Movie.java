@@ -1,24 +1,22 @@
 package com.showkokhon.scraper.showkokhonscraper.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Movie {
     private String name;
-    /**
-     * date -> location -> showTime map
-     */
-    private HashMap<String, HashMap<String, ShowTimes>> schedule;
+    private ArrayList<Schedule> schedule;
 
     public Movie(String name) {
         this.name = name;
-        schedule = new HashMap<>();
+        schedule = new ArrayList<>();
     }
 
     public String getName() {
         return name;
     }
 
-    public HashMap<String, HashMap<String, ShowTimes>> getSchedule() {
+    public ArrayList<Schedule> getSchedule() {
         return schedule;
     }
 
@@ -28,5 +26,9 @@ public class Movie {
                 "name='" + name + '\'' +
                 ", schedule=" + schedule +
                 '}';
+    }
+
+    public void setSchedule(ArrayList<Schedule> schedule) {
+        this.schedule = schedule;
     }
 }
