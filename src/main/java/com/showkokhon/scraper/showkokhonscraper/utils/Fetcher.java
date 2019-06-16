@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class Fetcher {
     public static ArrayList<Movie> getStarCineplexMoviesByLocation(String location) {
         var client = new ApiClient();
-        var res = client.fetch(location);
+        var res = client.fetchStarCineplex(location);
 
         if (res.STATUS_CODE != 200) {
             // return an empty arraylist, since there's no data

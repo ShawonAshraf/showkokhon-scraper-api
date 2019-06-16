@@ -1,6 +1,7 @@
 package com.showkokhon.scraper.showkokhonscraper;
 
 import com.showkokhon.scraper.showkokhonscraper.scraper.StarCineplexScraper;
+import com.showkokhon.scraper.showkokhonscraper.utils.ApiClient;
 import com.showkokhon.scraper.showkokhonscraper.utils.ListMerger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -44,6 +46,18 @@ public class ShowkokhonScraperApplicationTests {
         var merged = ListMerger.mergeLists(bcity, ss);
 
         assertEquals(merged.toString(), sampleMergedParsedData);
+    }
+
+    @Test
+    public void apiClientReturnsSomething() {
+        final String WEBSITE_ERROR = "Couldn't Fetch Data Due To WebSite Error";
+        var client = new ApiClient();
+
+        var bcity = client.fetchStarCineplex("Bashundhara Shopping Mall, Panthapath");
+        var ss = client.fetchStarCineplex("Shimanto Shambhar, Dhanmondi 2");
+
+        assertTrue(!bcity.MSG.equals(WEBSITE_ERROR));
+        assertTrue(!ss.MSG.equals(WEBSITE_ERROR));
     }
 
 
