@@ -33,7 +33,8 @@ Shows basic info.
 ### GET /scraper/v1/schedule/all
 Runs the scraper and returns movie schedules from both websites. In case the scraper fails, the server will return a `null` value as reponse.
 
-Example `null` response:
+__Example `null` response:__
+
 ```json
 {
     "STATUS_CODE": 200,
@@ -42,28 +43,29 @@ Example `null` response:
 }
 ```
 
-Example response:
+__Example response:__
+_Partial response shown_
+
 ```json
 {
     "STATUS_CODE": 200,
-    "SENT_AT": "Sat Jun 15 00:34:15 BDT 2019",
+    "SENT_AT": "Sun Jun 16 13:31:41 BDT 2019",
     "movies": [
         {
             "name": "Aabar Boshonto(2D)",
-            "schedule": {
-                "Wednesday, June 19, 2019": {
-                    "Bashundhara Shopping Mall, Panthapath": {
-                        "showTimes": [
-                            "01:40 PM"
-                        ]
-                    }
-                },
-                "Monday, June 17, 2019": {
-                    "Bashundhara Shopping Mall, Panthapath": {
-                        "showTimes": [
-                            "01:40 PM"
-                        ]
-                    }
+            "schedule": [
+                {
+                    "date": "Sunday, June 16, 2019",
+                    "playingAt": [
+                        {
+                            "name": "Bashundhara Shopping Mall, Panthapath",
+                            "showTimes": {
+                                "showTimes": [
+                                    "01:40 PM"
+                                ]
+                            }
+                        }
+                    ]
                 },
                 .......
 }
@@ -73,11 +75,19 @@ Example response:
 _Parameters:_
 - `cinemaId` : 0 for Star Cineplex and 1 for Blockbuster Cinemas
 
+__Example request :__ 
+
+`http://localhost:8080/scraper/v1/schedule/?cinemaId=0`
 
 ### GET /scraper/v1/schedule/
 _Parameters_
 - `cinemaId`
 - `location` : for multiple branches.
+
+
+__Example request :__ 
+
+`http://localhost:8080/scraper/v1/schedule/individual/?cinemaId=0&location=bcity`
 
 ## LICENSE
 MIT
