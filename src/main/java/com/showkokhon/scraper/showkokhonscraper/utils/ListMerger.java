@@ -6,6 +6,15 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public class ListMerger {
+    public static ArrayList<Movie> simpleMerge(ArrayList<Movie> bcity, ArrayList<Movie> shimantoShambhar) {
+        var merged = new ArrayList<Movie>();
+
+        merged.addAll(bcity);
+        merged.addAll(shimantoShambhar);
+
+        return merged;
+    }
+
     public static ArrayList<Movie> mergeLists(ArrayList<Movie> bcity, ArrayList<Movie> shimantoShambhar) {
         var merged = new ArrayList<Movie>();
 

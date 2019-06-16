@@ -1,7 +1,6 @@
 package com.showkokhon.scraper.showkokhonscraper.model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Movie {
     private String name;

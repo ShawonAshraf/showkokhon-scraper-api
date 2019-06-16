@@ -1,16 +1,14 @@
 package com.showkokhon.scraper.showkokhonscraper.model;
 
 public class PlayingAt {
-    private String name;
+    private int cinemaId;
+    private String locationName;
     private ShowTimes showTimes;
 
-    public PlayingAt(String name) {
-        this.name = name;
+    public PlayingAt(int cinemaId, String locationName) {
+        this.cinemaId = cinemaId;
+        this.locationName = locationName;
         showTimes = new ShowTimes();
-    }
-
-    public String getName() {
-        return name;
     }
 
     public ShowTimes getShowTimes() {
@@ -21,11 +19,21 @@ public class PlayingAt {
         this.showTimes = showTimes;
     }
 
+
     @Override
     public String toString() {
         return "PlayingAt{" +
-                "name='" + name + '\'' +
+                "cinemaId=" + cinemaId +
+                ", locationName='" + locationName + '\'' +
                 ", showTimes=" + showTimes +
                 '}';
+    }
+
+    public int getCinemaId() {
+        return cinemaId;
+    }
+
+    public String getLocationName() {
+        return locationName;
     }
 }

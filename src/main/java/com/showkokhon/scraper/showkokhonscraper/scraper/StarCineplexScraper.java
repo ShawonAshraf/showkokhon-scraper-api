@@ -77,7 +77,7 @@ public class StarCineplexScraper {
                 // refactor starts
                 var locations = new ArrayList<PlayingAt>();
 
-                var locX = new PlayingAt(location);
+                var locX = new PlayingAt(0, location);
                 locX.setShowTimes(times);
 
                 locations.add(locX);
