@@ -1,6 +1,8 @@
 package com.showkokhon.scraper.showkokhonscraper.scraper;
 
 import com.showkokhon.scraper.showkokhonscraper.model.Movie;
+import com.showkokhon.scraper.showkokhonscraper.model.PlayingAt;
+import com.showkokhon.scraper.showkokhonscraper.model.Schedule;
 import com.showkokhon.scraper.showkokhonscraper.model.ShowTimes;
 import org.jsoup.Jsoup;
 
@@ -72,8 +74,16 @@ public class StarCineplexScraper {
                 /**
                  * location -> showTime map
                  */
-                var loc = new HashMap<String, ShowTimes>();
-                loc.put(location, times);
+                // refactor starts
+                var locations = new ArrayList<PlayingAt>();
+
+                var locX = new PlayingAt(location);
+                locX.setShowTimes(times);
+
+                locations.add(locX);
+
+                // schedule
+                var schedule = new Schedule(date, locations);
 
 
                 /**
@@ -82,11 +92,12 @@ public class StarCineplexScraper {
                  */
                 if (!map.containsKey(name)) {
                     var m = new Movie(name);
-                    m.getSchedule().put(date, loc);
+
+                    m.getSchedule().add(schedule);
                     map.put(name, m);
                 } else {
                     var m = map.get(name);
-                    m.getSchedule().put(date, loc);
+                    m.getSchedule().add(schedule);
                 }
             }
         }

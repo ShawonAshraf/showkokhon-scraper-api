@@ -9,10 +9,6 @@ public class ListMerger {
     public static ArrayList<Movie> mergeLists(ArrayList<Movie> bcity, ArrayList<Movie> shimantoShambhar) {
         var merged = new ArrayList<Movie>();
 
-        // pivot will serve as the first list to append to merged
-        // it may be possible that either of bcity or shimantoShambhar lists are empty due to http errors
-        // the non empty list will be marked as pivot and added first to merged
-
         ArrayList<Movie> pivot = !bcity.isEmpty() ? bcity : shimantoShambhar;
         ArrayList<Movie> nonPivot = !bcity.isEmpty() ? shimantoShambhar : bcity;
 
@@ -20,41 +16,41 @@ public class ListMerger {
 
         int s = merged.size();
         for (int i = 0; i < s; i++) {
-            var name = merged.get(i).getName();
+            var movieToUpdate = merged.get(i);
+            var name = movieToUpdate.getName();
 
             /**
              * get the movies with the same name
              */
-            var sameMovies = nonPivot.stream().filter(movie -> movie.getName().equals(name)).collect(Collectors.toList());
+            var moviesWithSameName = nonPivot.stream()
+                    .filter(movie -> movie.getName().equals(name))
+                    .collect(Collectors.toList());
 
-            if (!sameMovies.isEmpty()) {
-                /**
-                 * get the same movies
-                 */
-                int l = sameMovies.size();
-                for (int j = 0; j < l; j++) {
-                    var sameMovie = sameMovies.get(j);
 
-                    /**
-                     * get reference to the movie to merge
-                     */
-                    var movieToMergeWith = merged.get(i);
+            int l = movieToUpdate.getSchedule().size();
+            for (Integer j = 0; j < l; j++) {
+                final var updateIndex = j; // to avoid lambda restrictions
 
-                    sameMovie.getSchedule().forEach((date, loc) -> {
-                        var map = movieToMergeWith.getSchedule();
+                // date of the movie to update
+                var referenceDate = movieToUpdate.getSchedule().get(j).getDate();
 
-                        /**
-                         * check if date exists
-                         * if it doesn't, add the loc map
-                         */
-                        if (map.containsKey(date)) {
-                            map.get(date).putAll(loc);
+                // iterate through
+                moviesWithSameName.forEach(movie -> {
+                    movie.getSchedule().forEach(schedule -> {
+                        var date = schedule.getDate();
+                        var playingAt = schedule.getPlayingAt();
+
+                        if (date.equals(referenceDate)) {
+                            // date matches, so update
+                            movieToUpdate.getSchedule().get(updateIndex).getPlayingAt().addAll(playingAt);
                         } else {
-                            map.put(date, loc);
+                            // add a new entry
+                            movieToUpdate.getSchedule().add(schedule);
                         }
                     });
-                }
+                });
             }
+
         }
 
         return merged;
