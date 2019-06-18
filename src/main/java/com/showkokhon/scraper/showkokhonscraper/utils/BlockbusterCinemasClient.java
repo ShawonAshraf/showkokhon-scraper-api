@@ -16,6 +16,7 @@ public class BlockbusterCinemasClient {
 
     public BlockbusterCinemasClient() {
         dates = new ArrayList<>();
+        prepareDateList();
     }
 
     public BasicScraperResponse fetch(String date) {
