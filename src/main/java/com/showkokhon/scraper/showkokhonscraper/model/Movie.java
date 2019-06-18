@@ -44,7 +44,7 @@ public class Movie {
                 ", imageUrl='" + imageUrl + '\'' +
                 '}';
     }
-    
+
     public void setSchedule(ArrayList<Schedule> schedule) {
         this.schedule = schedule;
     }
