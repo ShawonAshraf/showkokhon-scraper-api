@@ -88,7 +88,7 @@ public class StarCineplexScraper {
                  * update. else create a new one
                  */
                 if (!map.containsKey(name)) {
-                    var m = new Movie(name);
+                    var m = new Movie(name, "");
 
                     m.getSchedule().add(schedule);
                     map.put(name, m);
