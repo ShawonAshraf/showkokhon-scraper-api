@@ -39,10 +39,12 @@ public class Movie {
     public String toString() {
         return "Movie{" +
                 "name='" + name + '\'' +
+                ", mediaType='" + mediaType + '\'' +
                 ", schedule=" + schedule +
+                ", imageUrl='" + imageUrl + '\'' +
                 '}';
     }
-
+    
     public void setSchedule(ArrayList<Schedule> schedule) {
         this.schedule = schedule;
     }
