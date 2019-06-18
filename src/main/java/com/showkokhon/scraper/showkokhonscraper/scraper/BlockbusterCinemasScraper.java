@@ -4,6 +4,7 @@ import com.showkokhon.scraper.showkokhonscraper.model.Movie;
 import com.showkokhon.scraper.showkokhonscraper.model.PlayingAt;
 import com.showkokhon.scraper.showkokhonscraper.model.Schedule;
 import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 import java.text.SimpleDateFormat;
@@ -20,6 +21,15 @@ public class BlockbusterCinemasScraper {
         return cleaned;
     }
 
+    // don't run parser if there's no showtime for the date
+    private boolean validate(Elements divs) {
+        var x = divs.eq(0);
+        var h2 = x.select("h2");
+
+        var text = h2.text();
+
+        return !text.contains("No Movie Schedules");
+    }
 
 
     public String getFormattedDate(String d) {
@@ -45,51 +55,54 @@ public class BlockbusterCinemasScraper {
 
         var divs = html.getElementsByClass("strip_all_rooms_list wow fadeIn");
 
-        for (int i = 0; i < divs.size(); i++) {
-            var current = divs.eq(i);
+        if (validate(divs)) {
+            for (int i = 0; i < divs.size(); i++) {
+                var current = divs.eq(i);
 
-            var tableNode = current.select("table");
-            var timeNodes = tableNode.select("td");
+                var tableNode = current.select("table");
+                var timeNodes = tableNode.select("td");
 
-            // not to be confused with the showTimesArray
-            var showTimes = getShowTimesFromTimeNode(timeNodes);
+                // not to be confused with the showTimesArray
+                var showTimes = getShowTimesFromTimeNode(timeNodes);
 
-            // create a playingAtList
-            var playingAtList = new ArrayList<PlayingAt>();
-            showTimes.forEach((k, v) -> {
-                var playingAt = new PlayingAt(cinemaId, k);
-                playingAt.setShowTimes(v);
+                // create a playingAtList
+                var playingAtList = new ArrayList<PlayingAt>();
+                showTimes.forEach((k, v) -> {
+                    var playingAt = new PlayingAt(cinemaId, k);
+                    playingAt.setShowTimes(v);
 
-                playingAtList.add(playingAt);
-            });
+                    playingAtList.add(playingAt);
+                });
 
-            // create a schedule
-            var formattedDate = getFormattedDate(date);
-            var schedule = new Schedule(formattedDate, playingAtList);
+                // create a schedule
+                var formattedDate = getFormattedDate(date);
+                var schedule = new Schedule(formattedDate, playingAtList);
 
 
-            // get movie name
-            var nameNode = current.select("h3");
-            var name = getMovieNameFromNode(nameNode.text());
+                // get movie name
+                var nameNode = current.select("h3");
+                var name = getMovieNameFromNode(nameNode.text());
 
-            // now check if the movie exists in the map or not
-            if (!map.containsKey(name)) {
-                // create a movie instance
-                var mediaType = getMediaTypeFromNode(nameNode.text());
+                // now check if the movie exists in the map or not
+                if (!map.containsKey(name)) {
+                    // create a movie instance
+                    var mediaType = getMediaTypeFromNode(nameNode.text());
 
-                var movie = new Movie(name, mediaType);
-                var imageUrl = getImageUrlFromNode(current);
-                movie.setImageUrl(imageUrl);
+                    var movie = new Movie(name, mediaType);
+                    var imageUrl = getImageUrlFromNode(current);
+                    movie.setImageUrl(imageUrl);
 
-                // add schedule
-                movie.getSchedule().add(schedule);
+                    // add schedule
+                    movie.getSchedule().add(schedule);
 
-                map.put(name, movie);
-            } else {
-                map.get(name).getSchedule().add(schedule);
+                    map.put(name, movie);
+                } else {
+                    map.get(name).getSchedule().add(schedule);
+                }
             }
-        }
 
+        }
+        
         return map;
     }
 
