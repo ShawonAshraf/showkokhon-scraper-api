@@ -102,6 +102,30 @@ public class StarCineplexScraper {
         return map;
     }
 
+    /**
+     * get mediatype from movie name
+     */
+    public String getMediaTypeFromMovieName(String name) {
+        final var regex = "\\((\\d)D\\)";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(name);
+
+        String mediaType = "";
+
+        while (matcher.find()) {
+            var grp = matcher.group();
+            if (grp != null) {
+                mediaType = grp;
+                break;
+            }
+        }
+
+        mediaType = mediaType.replaceAll("\\(", "");
+        mediaType = mediaType.replaceAll("\\)", "");
+
+        return mediaType;
+    }
+
     /*
      * converts map to ArrayList for parser output
      * */
