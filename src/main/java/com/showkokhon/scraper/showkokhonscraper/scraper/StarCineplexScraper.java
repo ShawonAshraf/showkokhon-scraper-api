@@ -66,7 +66,11 @@ public class StarCineplexScraper {
 
             for (int k = 0; k < movieTitles.size(); k++) {
                 var name = movieTitles.get(k).text().trim();
+                var mediaType = getMediaTypeFromMovieName(name);
                 var timesList = getShowTimes(showTimes.get(k).text());
+
+                // update name
+                name = getFormattedMovieName(name);
 
                 /**
                  * location -> showTime map
@@ -88,7 +92,7 @@ public class StarCineplexScraper {
                  * update. else create a new one
                  */
                 if (!map.containsKey(name)) {
-                    var m = new Movie(name, "");
+                    var m = new Movie(name, mediaType);
 
                     m.getSchedule().add(schedule);
                     map.put(name, m);
@@ -124,6 +128,11 @@ public class StarCineplexScraper {
         mediaType = mediaType.replaceAll("\\)", "");
 
         return mediaType;
+    }
+
+    public String getFormattedMovieName(String name) {
+        final var regex = "\\((\\d)D\\)";
+        return name.split(regex)[0].trim();
     }
 
     /*
