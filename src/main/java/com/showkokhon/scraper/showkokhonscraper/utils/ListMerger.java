@@ -6,20 +6,20 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public class ListMerger {
-    public static ArrayList<Movie> simpleMerge(ArrayList<Movie> bcity, ArrayList<Movie> shimantoShambhar) {
+    public static ArrayList<Movie> simpleMerge(ArrayList<Movie> a, ArrayList<Movie> b) {
         var merged = new ArrayList<Movie>();
 
-        merged.addAll(bcity);
-        merged.addAll(shimantoShambhar);
+        merged.addAll(a);
+        merged.addAll(b);
 
         return merged;
     }
 
-    public static ArrayList<Movie> mergeLists(ArrayList<Movie> bcity, ArrayList<Movie> shimantoShambhar) {
+    public static ArrayList<Movie> mergeLists(ArrayList<Movie> a, ArrayList<Movie> b) {
         var merged = new ArrayList<Movie>();
 
-        ArrayList<Movie> pivot = !bcity.isEmpty() ? bcity : shimantoShambhar;
-        ArrayList<Movie> nonPivot = !bcity.isEmpty() ? shimantoShambhar : bcity;
+        ArrayList<Movie> pivot = !a.isEmpty() ? a : b;
+        ArrayList<Movie> nonPivot = !a.isEmpty() ? b : a;
 
         merged.addAll(pivot);
 
