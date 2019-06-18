@@ -25,6 +25,9 @@ public class ShowkokhonScraperApplicationTests {
 	private static String sampleParsedData;
 	private static String sampleMergedParsedData;
 
+	private static String sampleBlockbusterResponse;
+	private static String getSampleBlockbusterParsedString;
+
     @Test
     public void scraperShouldReturnCorrectData() {
         initMockData();
@@ -103,7 +106,7 @@ public class ShowkokhonScraperApplicationTests {
 
 
         sampleBcityResponseString = response1.toString();
-        sampleParsedData = "[Movie{name='Godzilla: King of the Monsters (3D)', schedule=[Schedule{date='Saturday, June 15, 2019', playingAt=[PlayingAt{cinemaId=0, locationName='Bashundhara Shopping Mall, Panthapath', showTimes=[02:00 PM, 04:40 PM, 07:20 PM]}]}]}]";
+        sampleParsedData = "[Movie{name='Godzilla: King of the Monsters', mediaType='3D', schedule=[Schedule{date='Saturday, June 15, 2019', playingAt=[PlayingAt{cinemaId=0, locationName='Bashundhara Shopping Mall, Panthapath', showTimes=[02:00 PM, 04:40 PM, 07:20 PM]}]}], imageUrl=''}]";
 
         var response2 = new StringBuilder();
         response2.append("<div class=\"node\" style=\"margin-top: 40px;\">")
@@ -142,7 +145,11 @@ public class ShowkokhonScraperApplicationTests {
 
 
         sampleSSResponseString = response2.toString();
-        sampleMergedParsedData = "[Movie{name='Godzilla: King of the Monsters (3D)', schedule=[Schedule{date='Saturday, June 15, 2019', playingAt=[PlayingAt{cinemaId=0, locationName='Bashundhara Shopping Mall, Panthapath', showTimes=[02:00 PM, 04:40 PM, 07:20 PM]}]}]}, Movie{name='Godzilla: King of the Monsters (3D)', schedule=[Schedule{date='Saturday, June 15, 2019', playingAt=[PlayingAt{cinemaId=0, locationName='Shimanto Shambhar, Dhanmondi 2', showTimes=[02:00 PM, 04:40 PM, 07:20 PM]}]}]}]";
+        sampleMergedParsedData = "[Movie{name='Godzilla: King of the Monsters', mediaType='3D', schedule=[Schedule{date='Saturday, June 15, 2019', playingAt=[PlayingAt{cinemaId=0, locationName='Bashundhara Shopping Mall, Panthapath', showTimes=[02:00 PM, 04:40 PM, 07:20 PM]}]}], imageUrl=''}, Movie{name='Godzilla: King of the Monsters', mediaType='3D', schedule=[Schedule{date='Saturday, June 15, 2019', playingAt=[PlayingAt{cinemaId=0, locationName='Shimanto Shambhar, Dhanmondi 2', showTimes=[02:00 PM, 04:40 PM, 07:20 PM]}]}], imageUrl=''}]";
+
+
+        // blockbuster
+
     }
 
 }
