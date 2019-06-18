@@ -3,7 +3,6 @@ package com.showkokhon.scraper.showkokhonscraper.scraper;
 import com.showkokhon.scraper.showkokhonscraper.model.Movie;
 import com.showkokhon.scraper.showkokhonscraper.model.PlayingAt;
 import com.showkokhon.scraper.showkokhonscraper.model.Schedule;
-import com.showkokhon.scraper.showkokhonscraper.model.ShowTimes;
 import org.jsoup.Jsoup;
 
 import java.util.ArrayList;
@@ -69,8 +68,6 @@ public class StarCineplexScraper {
                 var name = movieTitles.get(k).text().trim();
                 var timesList = getShowTimes(showTimes.get(k).text());
 
-                var times = new ShowTimes(timesList);
-
                 /**
                  * location -> showTime map
                  */
@@ -78,7 +75,7 @@ public class StarCineplexScraper {
                 var locations = new ArrayList<PlayingAt>();
 
                 var locX = new PlayingAt(0, location);
-                locX.setShowTimes(times);
+                locX.setShowTimes(timesList);
 
                 locations.add(locX);
 
