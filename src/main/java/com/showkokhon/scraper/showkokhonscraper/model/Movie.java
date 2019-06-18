@@ -4,11 +4,27 @@ import java.util.ArrayList;
 
 public class Movie {
     private String name;
+    private String mediaType;
     private ArrayList<Schedule> schedule;
+    private String imageUrl;
 
-    public Movie(String name) {
+    public Movie(String name, String mediaType) {
         this.name = name;
+        this.mediaType = mediaType;
+        imageUrl = "";
         schedule = new ArrayList<>();
+    }
+
+    public String getMediaType() {
+        return mediaType;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public String getName() {
