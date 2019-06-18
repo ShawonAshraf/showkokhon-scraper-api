@@ -82,6 +82,14 @@ public class ShowkokhonScraperApplicationTests {
         assertEquals(res.STATUS_CODE, 200);
     }
 
+    @Test
+    public void getFormattedDateReturnsProperFormat() {
+        var scraper = new BlockbusterCinemasScraper();
+        var date = scraper.getFormattedDate("2019-06-18");
+
+        assertEquals(date, "Tuesday, June 18, 2019");
+    }
+
 
     /**
      * Init mock data
