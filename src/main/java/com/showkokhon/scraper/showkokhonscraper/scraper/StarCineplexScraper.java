@@ -130,7 +130,7 @@ public class StarCineplexScraper {
         return mediaType;
     }
 
-    public String getFormattedMovieName(String name) {
+    private String getFormattedMovieName(String name) {
         final var regex = "\\((\\d)D\\)";
         return name.split(regex)[0].trim();
     }

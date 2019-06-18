@@ -90,6 +90,17 @@ public class ShowkokhonScraperApplicationTests {
         assertEquals(date, "Tuesday, June 18, 2019");
     }
 
+    @Test
+    public void getMediaTypeFromMovieNamesReturnsMediaType() {
+        var scraper = new StarCineplexScraper();
+
+        var resA = scraper.getMediaTypeFromMovieName("Agdoom Bagdoom (3D)");
+        var resB = scraper.getMediaTypeFromMovieName("Leler Nani (2D)");
+
+        assertTrue(resA.equals("3D"));
+        assertTrue(resB.equals("2D"));
+    }
+
 
     /**
      * Init mock data
