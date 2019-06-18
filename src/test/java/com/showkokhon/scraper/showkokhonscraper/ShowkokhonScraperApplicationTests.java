@@ -1,5 +1,6 @@
 package com.showkokhon.scraper.showkokhonscraper;
 
+import com.showkokhon.scraper.showkokhonscraper.scraper.BlockbusterCinemasScraper;
 import com.showkokhon.scraper.showkokhonscraper.scraper.StarCineplexScraper;
 import com.showkokhon.scraper.showkokhonscraper.utils.BlockbusterCinemasClient;
 import com.showkokhon.scraper.showkokhonscraper.utils.StarCineplexApiClient;
@@ -27,7 +28,7 @@ public class ShowkokhonScraperApplicationTests {
 	private static String sampleMergedParsedData;
 
 	private static String sampleBlockbusterResponse;
-	private static String SampleBlockbusterParsedString;
+	private static String sampleBlockbusterParsedString;
 
     @Test
     public void scraperShouldReturnCorrectData() {
@@ -37,6 +38,11 @@ public class ShowkokhonScraperApplicationTests {
         var parsed = scraper.parse(sampleBcityResponseString, "Bashundhara Shopping Mall, Panthapath");
 
         assertEquals(parsed.toString(), sampleParsedData);
+
+        var bbScraper = new BlockbusterCinemasScraper();
+        var jfp = bbScraper.parse(sampleBlockbusterResponse, "2019-06-18");
+
+        assertEquals(jfp.toString(), sampleBlockbusterParsedString);
     }
 
     @Test
@@ -261,7 +267,7 @@ public class ShowkokhonScraperApplicationTests {
 
 
         sampleBlockbusterResponse = responseJfp.toString();
-        SampleBlockbusterParsedString = "[Movie{name='Aladdin', mediaType='3D', schedule=[Schedule{date='Tuesday, June 18, 2019', playingAt=[PlayingAt{cinemaId=1, locationName='On Theatre CLUB ROYALE', showTimes=[2:50 pm, 8:00 pm]}, PlayingAt{cinemaId=1, locationName='On Theatre TRANSITION', showTimes=[11:30 am, 2:15 pm, 4:50 pm, 7:30 pm]}]}], imageUrl='https://image.blockbusterbd.net/00408.png'}]";
+        sampleBlockbusterParsedString = "[Movie{name='Aladdin', mediaType='3D', schedule=[Schedule{date='Tuesday, June 18, 2019', playingAt=[PlayingAt{cinemaId=1, locationName='On Theatre CLUB ROYALE', showTimes=[2:50 pm, 8:00 pm]}, PlayingAt{cinemaId=1, locationName='On Theatre TRANSITION', showTimes=[11:30 am, 2:15 pm, 4:50 pm, 7:30 pm]}]}], imageUrl='https://image.blockbusterbd.net/00408.png'}]";
     }
 
 }
