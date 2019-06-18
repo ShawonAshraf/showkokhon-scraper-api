@@ -1,6 +1,7 @@
 package com.showkokhon.scraper.showkokhonscraper;
 
 import com.showkokhon.scraper.showkokhonscraper.scraper.StarCineplexScraper;
+import com.showkokhon.scraper.showkokhonscraper.utils.BlockbusterCinemasClient;
 import com.showkokhon.scraper.showkokhonscraper.utils.StarCineplexApiClient;
 import com.showkokhon.scraper.showkokhonscraper.utils.ListMerger;
 import org.junit.Test;
@@ -59,8 +60,12 @@ public class ShowkokhonScraperApplicationTests {
         var bcity = client.fetch("Bashundhara Shopping Mall, Panthapath");
         var ss = client.fetch("Shimanto Shambhar, Dhanmondi 2");
 
+        var bbClient = new BlockbusterCinemasClient();
+        var jfp = bbClient.fetch("2019-06-18");
+
         assertTrue(!bcity.MSG.equals(WEBSITE_ERROR));
         assertTrue(!ss.MSG.equals(WEBSITE_ERROR));
+        assertTrue(!jfp.MSG.equals(WEBSITE_ERROR));
     }
 
 
