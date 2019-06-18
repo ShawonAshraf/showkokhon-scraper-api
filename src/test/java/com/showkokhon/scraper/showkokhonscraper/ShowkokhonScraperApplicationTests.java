@@ -67,7 +67,7 @@ public class ShowkokhonScraperApplicationTests {
         var ss = client.fetch("Shimanto Shambhar, Dhanmondi 2");
 
         var bbClient = new BlockbusterCinemasClient();
-        var jfp = bbClient.fetch();
+        var jfp = bbClient.bulkFetch();
 
         assertTrue(!bcity.MSG.equals(WEBSITE_ERROR));
         assertTrue(!ss.MSG.equals(WEBSITE_ERROR));
@@ -77,7 +77,7 @@ public class ShowkokhonScraperApplicationTests {
     @Test
     public void blockbusterClientReturnsReponse() {
         var client = new BlockbusterCinemasClient();
-        var res = client.fetch();
+        var res = client.bulkFetch();
 
         assertEquals(res.STATUS_CODE, 200);
     }
