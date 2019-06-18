@@ -5,7 +5,7 @@ import kong.unirest.Unirest;
 
 import java.util.HashMap;
 
-public class ApiClient {
+public class StarCineplexApiClient {
     // required for star cineplex
     private final String urlString = "http://cineplexbd.com/cineplexbd/getShowTime";
     private final String formDataKey = "locationCode";
@@ -22,7 +22,7 @@ public class ApiClient {
     private HashMap<String, String> locationCodeMap;
     // ##
 
-    public ApiClient() {
+    public StarCineplexApiClient() {
         locationCodeMap = new HashMap<>();
         populateLocationCodeMap();
     }
@@ -39,7 +39,7 @@ public class ApiClient {
      * Fetch MSG from the API
      * returns MSG as a BasicScraperResponse
      */
-    public BasicScraperResponse fetchStarCineplex(String location) {
+    public BasicScraperResponse fetch(String location) {
         String body = String.format("--%s\r\nContent-Disposition: form-data; name=\"%s\"\r\n\r\n%s\r\n--%s--",
                 formBoundary,
                 formDataKey,
