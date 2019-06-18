@@ -4,7 +4,6 @@ import com.showkokhon.scraper.showkokhonscraper.model.Movie;
 import com.showkokhon.scraper.showkokhonscraper.model.PlayingAt;
 import com.showkokhon.scraper.showkokhonscraper.model.Schedule;
 import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 import java.text.SimpleDateFormat;
