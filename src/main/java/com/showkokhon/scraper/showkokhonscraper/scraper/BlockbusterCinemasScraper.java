@@ -48,7 +48,7 @@ public class BlockbusterCinemasScraper {
         return "";
     }
 
-    public HashMap<String, Movie> parseHTML(String raw, String date) {
+    private HashMap<String, Movie> parseHTML(String raw, String date) {
         var map = new HashMap<String, Movie>();
         var html = Jsoup.parse(raw);
         final var cinemaId = 1;
@@ -102,11 +102,11 @@ public class BlockbusterCinemasScraper {
             }
 
         }
-        
+
         return map;
     }
 
-    public String getImageUrlFromNode(Elements node) {
+    private String getImageUrlFromNode(Elements node) {
         var img = node.select("img");
         return img.attr("src");
     }
@@ -131,7 +131,7 @@ public class BlockbusterCinemasScraper {
         return map;
     }
 
-    public String getMediaTypeFromNode(String nodeText) {
+    private String getMediaTypeFromNode(String nodeText) {
         final var regex = "(\\[ (\\d)D \\])";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(nodeText);
@@ -152,14 +152,14 @@ public class BlockbusterCinemasScraper {
         return mediaType;
     }
 
-    public String getFormattedNameNode(String nameNodeString) {
+    private String getFormattedNameNode(String nameNodeString) {
         final var regexPattern = "(\\[ (\\d)D \\])";
         var formatted = nameNodeString.replaceAll(regexPattern, "");
 
         return formatted;
     }
 
-    public String getMovieNameFromNode(String unformatted) {
+    private String getMovieNameFromNode(String unformatted) {
         var formatted = getFormattedNameNode(unformatted);
 
         final var regexSplit = "\\dD";
