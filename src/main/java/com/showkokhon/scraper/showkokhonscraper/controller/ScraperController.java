@@ -30,8 +30,8 @@ public class ScraperController {
 
             case 1:
                 // blockbuster
-                // TODO : implement when blockbuster scraper is ready
-                response = new ScraperResponseWithMovies(200, null);
+                var bbMovies = Fetcher.getAllFromBlocbusterMovies();
+                response = new ScraperResponseWithMovies(200, bbMovies);
                 return response;
             default:
                 response = new ScraperResponseWithMovies(404, null);
@@ -59,8 +59,8 @@ public class ScraperController {
                     return new ScraperResponseWithMovies(404, null);
             }
         } else {
-            // TODO : implement when blockbuster scraper is ready
-            return new ScraperResponseWithMovies(200, null);
+            var bbMovies = Fetcher.getAllFromBlocbusterMovies();
+            return new ScraperResponseWithMovies(200, bbMovies);
         }
     }
 }
