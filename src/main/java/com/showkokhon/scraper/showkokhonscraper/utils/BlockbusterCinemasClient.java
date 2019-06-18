@@ -18,7 +18,7 @@ public class BlockbusterCinemasClient {
         dates = new ArrayList<>();
     }
 
-    private BasicScraperResponse _fetch(String date) {
+    public BasicScraperResponse fetch(String date) {
         var requestString = String.format("%s?request=%s", url, date);
         var response = Unirest.get(requestString).asString();
 
@@ -30,14 +30,14 @@ public class BlockbusterCinemasClient {
                 response.getStatus(), WEBSITE_ERROR, null);
     }
 
-    public BasicScraperResponse fetch() {
+    public BasicScraperResponse bulkFetch() {
         prepareDateList();
         var data = new StringBuilder();
 
         try {
             dates.forEach(date -> {
                 // make request
-                var response = _fetch(date);
+                var response = fetch(date);
                 data.append(response.DATA);
             });
 
@@ -48,7 +48,7 @@ public class BlockbusterCinemasClient {
         }
     }
 
-    // fetch the next 7 days dates
+    // bulkFetch the next 7 days dates
     private void prepareDateList() {
         var today = LocalDate.now();
         dates.add(today.toString());
@@ -59,4 +59,7 @@ public class BlockbusterCinemasClient {
         }
     }
 
+    public ArrayList<String> getDates() {
+        return dates;
+    }
 }
