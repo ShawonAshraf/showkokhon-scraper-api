@@ -12,6 +12,9 @@ public class ListMerger {
         merged.addAll(a);
         merged.addAll(b);
 
+        // update image url
+        updateImageURL(merged);
+
         return merged;
     }
 
@@ -74,5 +77,27 @@ public class ListMerger {
     // check for movie image url
     private static boolean hasImageURL(Movie movie) {
         return !movie.getImageUrl().equals("");
+    }
+
+    // update image url
+    private static void updateImageURL(ArrayList<Movie> merged) {
+        int s = merged.size();
+        for (int i = 0; i < s; i++) {
+            var movie = merged.get(i);
+
+            if (hasImageURL(movie)) {
+                continue;
+            }
+
+            var moviesWithSameName = merged.stream()
+                    .filter(m -> m.getName().equals(movie.getName()) && hasImageURL(m))
+                    .collect(Collectors.toList());
+
+            if (!moviesWithSameName.isEmpty()) {
+                var update = moviesWithSameName.get(0);
+                movie.setImageUrl(update.getImageUrl());
+                continue;
+            }
+        }
     }
 }

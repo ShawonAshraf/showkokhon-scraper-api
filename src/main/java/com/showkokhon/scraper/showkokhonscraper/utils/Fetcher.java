@@ -27,7 +27,7 @@ public class Fetcher {
         var bcityMovies = Fetcher.getStarCineplexMoviesByLocation(Constants.bashundharaCity);
         var ssMovies = Fetcher.getStarCineplexMoviesByLocation(Constants.shimantoShambhar);
 
-        var merged = ListMerger.mergeLists(bcityMovies, ssMovies);
+        var merged = ListMerger.simpleMerge(bcityMovies, ssMovies);
         return merged;
     }
 
@@ -35,7 +35,7 @@ public class Fetcher {
         var star = getAllStarCineplexMovies();
         var bb = getAllFromBlocbusterMovies();
 
-        var merged = ListMerger.mergeLists(star, bb);
+        var merged = ListMerger.simpleMerge(star, bb);
 
         // for now
         return merged;
