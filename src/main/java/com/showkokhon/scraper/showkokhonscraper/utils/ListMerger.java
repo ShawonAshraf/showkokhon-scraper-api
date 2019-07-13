@@ -45,6 +45,12 @@ public class ListMerger {
 
                 // iterate through
                 moviesWithSameName.forEach(movie -> {
+                    // update imageURL
+                    if (!hasImageURL(movieToUpdate) && hasImageURL(movie)) {
+                        var imageURL = movie.getImageUrl();
+                        movieToUpdate.setImageUrl(imageURL);
+                    }
+
                     movie.getSchedule().forEach(schedule -> {
                         var date = schedule.getDate();
                         var playingAt = schedule.getPlayingAt();
@@ -63,5 +69,10 @@ public class ListMerger {
         }
 
         return merged;
+    }
+
+    // check for movie image url
+    private static boolean hasImageURL(Movie movie) {
+        return !movie.getImageUrl().equals("");
     }
 }
