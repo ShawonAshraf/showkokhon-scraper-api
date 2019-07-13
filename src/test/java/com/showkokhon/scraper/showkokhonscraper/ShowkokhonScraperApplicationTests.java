@@ -53,7 +53,7 @@ public class ShowkokhonScraperApplicationTests {
         var bcity = scraper.parse(sampleBcityResponseString, "Bashundhara Shopping Mall, Panthapath");
         var ss = scraper.parse(sampleSSResponseString, "Shimanto Shambhar, Dhanmondi 2");
 
-        var merged = ListMerger.simpleMerge(bcity, ss);
+        var merged = ListMerger.mergeLists(bcity, ss);
 
         assertEquals(merged.toString(), sampleMergedParsedData);
     }
@@ -183,11 +183,9 @@ public class ShowkokhonScraperApplicationTests {
 
 
         sampleSSResponseString = response2.toString();
-        sampleMergedParsedData = "[Movie{name='Godzilla: King of the Monsters', mediaType='3D', schedule=[Schedule{date='Saturday, June 15, 2019', playingAt=[PlayingAt{cinemaId=0, locationName='Bashundhara Shopping Mall, Panthapath', showTimes=[02:00 PM, 04:40 PM, 07:20 PM]}]}], imageUrl=''}, Movie{name='Godzilla: King of the Monsters', mediaType='3D', schedule=[Schedule{date='Saturday, June 15, 2019', playingAt=[PlayingAt{cinemaId=0, locationName='Shimanto Shambhar, Dhanmondi 2', showTimes=[02:00 PM, 04:40 PM, 07:20 PM]}]}], imageUrl=''}]";
-
+        sampleMergedParsedData = "[Movie{name='Godzilla: King of the Monsters', mediaType='3D', schedule=[Schedule{date='Saturday, June 15, 2019', playingAt=[PlayingAt{cinemaId=0, locationName='Bashundhara Shopping Mall, Panthapath', showTimes=[02:00 PM, 04:40 PM, 07:20 PM]}, PlayingAt{cinemaId=0, locationName='Shimanto Shambhar, Dhanmondi 2', showTimes=[02:00 PM, 04:40 PM, 07:20 PM]}]}], imageUrl=''}]";
 
         // blockbuster
-
         StringBuilder responseJfp = new StringBuilder();
         responseJfp.append("<div class=\"strip_all_rooms_list wow fadeIn\" data-wow-delay=\"0.1s\" style=\"margin: 10px;\">")
                 .append("                <div class=\"row\">")
