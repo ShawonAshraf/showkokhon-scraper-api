@@ -26,7 +26,7 @@ Shows basic info.
     "STATUS_CODE": 200,
     "DATA": null,
     "MSG": "Green All across the board!",
-    "SENT_AT": "Sat Jun 15 00:36:16 BDT 2019"
+    "SENT_AT": "2019-08-01T21:01:31.786Z"
 }
 ```
 
@@ -38,7 +38,7 @@ __Example `null` response:__
 ```json
 {
     "STATUS_CODE": 200,
-    "SENT_AT": "Sat Jun 15 00:18:02 BDT 2019",
+    "SENT_AT": "2019-08-01T21:01:31.786Z",
     "movies": null
 }
 ```
@@ -49,7 +49,7 @@ _Partial response shown_
 ```json
 {
     "STATUS_CODE": 200,
-    "SENT_AT": "Sun Jun 16 13:31:41 BDT 2019",
+    "SENT_AT": "2019-08-01T21:01:31.786Z",
     "movies": [
         {
             "name": "Aabar Boshonto(2D)",
