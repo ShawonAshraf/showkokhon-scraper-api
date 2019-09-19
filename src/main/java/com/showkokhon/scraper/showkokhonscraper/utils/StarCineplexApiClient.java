@@ -61,7 +61,6 @@ public class StarCineplexApiClient {
 
             return response;
         } catch (Exception e) {
-            e.printStackTrace();
             return new BasicScraperResponse(404, WEBSITE_ERROR, null);
         }
     }
