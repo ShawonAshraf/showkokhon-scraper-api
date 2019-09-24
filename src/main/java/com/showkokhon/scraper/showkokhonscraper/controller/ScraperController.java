@@ -6,14 +6,21 @@ import com.showkokhon.scraper.showkokhonscraper.model.ScraperResponseWithMovies;
 import com.showkokhon.scraper.showkokhonscraper.utils.Fetcher;
 import org.springframework.web.bind.annotation.*;
 
+import javax.xml.crypto.Data;
+
 
 @CrossOrigin
 @RestController
 public class ScraperController {
 
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public BasicScraperResponse index() {
+        return  new BasicScraperResponse(200, "Showkokhon-Scraper-API", null);
+    }
+
     @RequestMapping(value = "/scraper/v1/", method = RequestMethod.GET)
-    public BasicScraperResponse root() {
-        return new BasicScraperResponse(200, "Green All across the board!", null);
+    public BasicScraperResponse scraperV1Root() {
+        return new BasicScraperResponse(200, "Scraper V1", null);
     }
 
     @RequestMapping(value = "/scraper/v1/schedule/", method = RequestMethod.GET)
