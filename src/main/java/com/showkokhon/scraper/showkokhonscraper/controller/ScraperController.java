@@ -62,6 +62,9 @@ public class ScraperController {
                 case "ss":
                     var ssMovies = Fetcher.getStarCineplexMoviesByLocation(Constants.shimantoShambhar);
                     return new ScraperResponseWithMovies(200, ssMovies);
+                case "sks":
+                    var sksMovies = Fetcher.getStarCineplexMoviesByLocation(Constants.sksTower);
+                    return new ScraperResponseWithMovies(200, sksMovies);
                 default:
                     return new ScraperResponseWithMovies(404, null);
             }

@@ -26,8 +26,11 @@ public class Fetcher {
     public static ArrayList<Movie> getAllStarCineplexMovies() {
         var bcityMovies = Fetcher.getStarCineplexMoviesByLocation(Constants.bashundharaCity);
         var ssMovies = Fetcher.getStarCineplexMoviesByLocation(Constants.shimantoShambhar);
+        var sksMovies = Fetcher.getStarCineplexMoviesByLocation(Constants.sksTower);
 
         var merged = ListMerger.simpleMerge(bcityMovies, ssMovies);
+        merged = ListMerger.simpleMerge(merged, sksMovies);
+
         return merged;
     }
 

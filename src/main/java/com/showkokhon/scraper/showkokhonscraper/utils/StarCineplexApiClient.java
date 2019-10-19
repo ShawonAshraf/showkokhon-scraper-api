@@ -33,6 +33,7 @@ public class StarCineplexApiClient {
     private void populateLocationCodeMap() {
         locationCodeMap.put("Bashundhara Shopping Mall, Panthapath", "CP");
         locationCodeMap.put("Shimanto Shambhar, Dhanmondi 2", "SS");
+        locationCodeMap.put("SKS Tower, Mohakhali", "SKS");
     }
 
     /**
