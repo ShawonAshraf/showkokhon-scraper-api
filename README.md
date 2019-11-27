@@ -27,7 +27,7 @@ mvn clean package
 ```
 - Run the war :
 ```bash
-java -jar target/showkokhon-scraper-0.0.1-SNAPSHOT.war
+java -jar target/showkokhon-scraper-2.0.0.RELEASE.war
 ```
 
 - The server will be up on port `8080`. Use the client of your choice to make `HTTP` requests.
