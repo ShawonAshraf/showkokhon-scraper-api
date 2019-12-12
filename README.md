@@ -1,5 +1,6 @@
 # showkokhon-scraper-api
 [![Build Status](https://travis-ci.com/ShawonAshraf/showkokhon-scraper-api.svg?branch=master)](https://travis-ci.com/ShawonAshraf/showkokhon-scraper-api) [![CodeFactor](https://www.codefactor.io/repository/github/shawonashraf/showkokhon-scraper-api/badge)](https://www.codefactor.io/repository/github/shawonashraf/showkokhon-scraper-api)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FShawonAshraf%2Fshowkokhon-scraper-api.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FShawonAshraf%2Fshowkokhon-scraper-api?ref=badge_shield)
 
 Scraps movie schedules from Star Cineplex and Blockbuster Cinemas websites.
 
@@ -118,3 +119,6 @@ __Example request :__
 
 ## LICENSE
 MIT
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FShawonAshraf%2Fshowkokhon-scraper-api.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FShawonAshraf%2Fshowkokhon-scraper-api?ref=badge_large)
