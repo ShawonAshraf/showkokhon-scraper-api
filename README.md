@@ -1,5 +1,5 @@
 # showkokhon-scraper-api
-[![Build Status](https://travis-ci.com/ShawonAshraf/showkokhon-scraper-api.svg?branch=master)](https://travis-ci.com/ShawonAshraf/showkokhon-scraper-api) [![CodeFactor](https://www.codefactor.io/repository/github/shawonashraf/showkokhon-scraper-api/badge)](https://www.codefactor.io/repository/github/shawonashraf/showkokhon-scraper-api)
+[![Build Status](https://travis-ci.com/ShawonAshraf/showkokhon-scraper-api.svg?branch=master)](https://travis-ci.com/ShawonAshraf/showkokhon-scraper-api) [![CodeFactor](https://www.codefactor.io/repository/github/shawonashraf/showkokhon-scraper-api/badge)](https://www.codefactor.io/repository/github/shawonashraf/showkokhon-scraper-api) [![Build Status](https://dev.azure.com/shawonAshraf/showkokhon-scraper/_apis/build/status/ShawonAshraf.showkokhon-scraper-api?branchName=master)](https://dev.azure.com/shawonAshraf/showkokhon-scraper/_build/latest?definitionId=2&branchName=master)
 
 Scraps movie schedules from Star Cineplex and Blockbuster Cinemas websites.
 
