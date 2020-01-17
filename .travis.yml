@@ -1,10 +1,7 @@
 language: java
-sudo: false
+jdk: openjdk11
 
 script:
-  - "mvn cobertura:cobertura"
+  - ./mvnw clean package
   - gem install dpl
   - dpl --provider=heroku --app=$DPL_APP_NAME --api-key=$DPL_API_KEY
-
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
