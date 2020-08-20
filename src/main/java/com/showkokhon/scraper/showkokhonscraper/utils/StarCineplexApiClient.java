@@ -2,10 +2,14 @@ package com.showkokhon.scraper.showkokhonscraper.utils;
 
 import com.showkokhon.scraper.showkokhonscraper.model.BasicScraperResponse;
 import kong.unirest.Unirest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 
 public class StarCineplexApiClient {
+    Logger logger = LoggerFactory.getLogger(StarCineplexApiClient.class);
+
     // required for star cineplex
     private final String urlString = "http://cineplexbd.com/cineplexbd/getShowTime";
     private final String formDataKey = "locationCode";
@@ -60,8 +64,11 @@ public class StarCineplexApiClient {
                     new BasicScraperResponse(res.getStatus(), res.getStatusText(), res.getBody()) : new BasicScraperResponse(
                             res.getStatus(), WEBSITE_ERROR, null);
 
+            logger.trace(res.getStatusText());
+
             return response;
         } catch (Exception e) {
+            logger.error("Error getting data from Star Cineplex.");
             return new BasicScraperResponse(404, WEBSITE_ERROR, null);
         }
     }

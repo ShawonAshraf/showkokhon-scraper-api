@@ -3,11 +3,14 @@ package com.showkokhon.scraper.showkokhonscraper.utils;
 import com.showkokhon.scraper.showkokhonscraper.model.BasicScraperResponse;
 import kong.unirest.Unirest;
 import org.jsoup.Jsoup;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class BlockbusterCinemasClient {
+    Logger logger = LoggerFactory.getLogger(BlockbusterCinemasClient.class);
     // generic error message
     private final String WEBSITE_ERROR = "Couldn't Fetch Data Due To WebSite Error";
     private final String url = "https://blockbusterbd.com/schedule.php";
@@ -20,8 +23,11 @@ public class BlockbusterCinemasClient {
     }
 
     public BasicScraperResponse fetch(String date) {
+        logger.info("Fetching data from Blockbuster for " + date);
         var requestString = String.format("%s?request=%s", url, date);
         var response = Unirest.get(requestString).asString();
+
+        logger.trace(response.getStatusText());
 
         return response.getStatus() == 200 ?
                 new BasicScraperResponse(
@@ -44,6 +50,7 @@ public class BlockbusterCinemasClient {
 
             return new BasicScraperResponse(200, "OK", data.toString());
         } catch (Exception e) {
+            logger.error("Error while fetching data from blockbuster.");
             return new BasicScraperResponse(
                     500, WEBSITE_ERROR, null);
         }

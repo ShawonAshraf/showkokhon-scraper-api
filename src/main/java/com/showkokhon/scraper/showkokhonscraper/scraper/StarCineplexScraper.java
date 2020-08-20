@@ -4,6 +4,8 @@ import com.showkokhon.scraper.showkokhonscraper.model.Movie;
 import com.showkokhon.scraper.showkokhonscraper.model.PlayingAt;
 import com.showkokhon.scraper.showkokhonscraper.model.Schedule;
 import org.jsoup.Jsoup;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,8 +13,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StarCineplexScraper {
+    Logger logger = LoggerFactory.getLogger(StarCineplexScraper.class);
+
     public ArrayList<Movie> parse(String html, String location) {
+        logger.info("PARSING");
         var parsed = parseHTML(html, location);
+        logger.info("CLEAN PARSED DATA");
         var cleaned = mapToArrayList(parsed);
 
         return cleaned;
