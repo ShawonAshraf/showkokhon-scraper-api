@@ -3,8 +3,11 @@ package com.showkokhon.scraper.showkokhonscraper.scraper;
 import com.showkokhon.scraper.showkokhonscraper.model.Movie;
 import com.showkokhon.scraper.showkokhonscraper.model.PlayingAt;
 import com.showkokhon.scraper.showkokhonscraper.model.Schedule;
+import com.showkokhon.scraper.showkokhonscraper.utils.BlockbusterCinemasClient;
 import org.jsoup.Jsoup;
 import org.jsoup.select.Elements;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -13,11 +16,17 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class BlockbusterCinemasScraper {
+    Logger logger = LoggerFactory.getLogger(BlockbusterCinemasScraper.class);
     public ArrayList<Movie> parse(String html, String date) {
-        var parsed = parseHTML(html, date);
-        var cleaned = mapToArrayList(parsed);
+        try {
+            var parsed = parseHTML(html, date);
+            var cleaned = mapToArrayList(parsed);
 
-        return cleaned;
+            return cleaned;
+        } catch (Exception e) {
+            logger.error("Error parsing - Blockbuster cinemas.");
+            return new ArrayList<Movie>();
+        }
     }
 
     // don't run parser if there's no showtime for the date

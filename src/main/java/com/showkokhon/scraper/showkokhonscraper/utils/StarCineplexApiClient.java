@@ -54,6 +54,7 @@ public class StarCineplexApiClient {
 
         try {
             var res = Unirest.post(urlString)
+                    .connectTimeout(10 * 1000)
                     .header("content-type", headerValue)
                     .header("cache-control", "no-cache")
                     .body(body)

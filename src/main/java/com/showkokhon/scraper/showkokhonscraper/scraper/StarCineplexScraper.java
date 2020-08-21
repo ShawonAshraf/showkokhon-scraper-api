@@ -16,12 +16,17 @@ public class StarCineplexScraper {
     Logger logger = LoggerFactory.getLogger(StarCineplexScraper.class);
 
     public ArrayList<Movie> parse(String html, String location) {
-        logger.info("PARSING");
-        var parsed = parseHTML(html, location);
-        logger.info("CLEAN PARSED DATA");
-        var cleaned = mapToArrayList(parsed);
+        try {
+            logger.info("PARSING - Star Cineplex");
+            var parsed = parseHTML(html, location);
+            logger.info("CLEANING PARSED DATA - Star Cineplex");
+            var cleaned = mapToArrayList(parsed);
 
-        return cleaned;
+            return cleaned;
+        } catch (Exception e) {
+            logger.error("Error parsing website data - Star Cineplex.");
+            return new ArrayList<Movie>();
+        }
     }
 
     /**
