@@ -44,7 +44,8 @@ public class Fetcher {
     }
 
     public static ArrayList<Movie> getAllMovies() {
-        var star = getAllStarCineplexMovies();
+        var star = WebsiteStatusChecker.isStarCineplexOk() ?
+                getAllStarCineplexMovies() : new ArrayList<Movie>();
         var bb = getAllFromBlocbusterMovies();
 
         var merged = ListMerger.simpleMerge(star, bb);
