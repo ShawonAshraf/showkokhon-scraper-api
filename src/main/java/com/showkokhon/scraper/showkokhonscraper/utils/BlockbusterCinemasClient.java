@@ -6,6 +6,7 @@ import org.jsoup.Jsoup;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.net.SocketTimeoutException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -24,17 +25,22 @@ public class BlockbusterCinemasClient {
 
     public BasicScraperResponse fetch(String date) {
         logger.info("Fetching data from Blockbuster for " + date);
-        var requestString = String.format("%s?request=%s", url, date);
-        var response = Unirest.get(requestString).asString();
+        try {
+            var requestString = String.format("%s?request=%s", url, date);
+            var response = Unirest.get(requestString).asString();
 
-        logger.trace(response.getStatusText());
+            logger.trace(response.getStatusText());
 
-        return response.getStatus() == 200 ?
-                new BasicScraperResponse(
-                        response.getStatus(),
-                        response.getStatusText(),
-                        response.getBody()) : new BasicScraperResponse(
-                response.getStatus(), WEBSITE_ERROR, null);
+            return response.getStatus() == 200 ?
+                    new BasicScraperResponse(
+                            response.getStatus(),
+                            response.getStatusText(),
+                            response.getBody()) : new BasicScraperResponse(
+                    response.getStatus(), WEBSITE_ERROR, null);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            return new BasicScraperResponse(500, WEBSITE_ERROR, null);
+        }
     }
 
     public BasicScraperResponse bulkFetch() {
