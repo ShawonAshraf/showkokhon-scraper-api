@@ -48,7 +48,8 @@ public class ScraperController {
 
     @RequestMapping(value = "/scraper/v1/schedule/all", method = RequestMethod.GET)
     public ScraperResponseWithMovies getAllSchedule() {
-        var movies = Fetcher.getAllMovies();
+        // var movies = Fetcher.getAllMovies();
+        var movies = Fetcher.getAllStarCineplexMovies();
         return new ScraperResponseWithMovies(200, movies);
     }
 

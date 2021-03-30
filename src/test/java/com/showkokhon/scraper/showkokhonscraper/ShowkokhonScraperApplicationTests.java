@@ -74,13 +74,13 @@ public class ShowkokhonScraperApplicationTests {
 //        assertTrue(!jfp.MSG.equals(WEBSITE_ERROR));
 //    }
 
-    @Test
-    public void blockbusterClientReturnsReponse() {
-        var client = new BlockbusterCinemasClient();
-        var res = client.bulkFetch();
-
-        assertEquals(res.STATUS_CODE, 200);
-    }
+//    @Test
+//    public void blockbusterClientReturnsReponse() {
+//        var client = new BlockbusterCinemasClient();
+//        var res = client.bulkFetch();
+//
+//        assertEquals(res.STATUS_CODE, 200);
+//    }
 
     @Test
     public void getFormattedDateReturnsProperFormat() {
