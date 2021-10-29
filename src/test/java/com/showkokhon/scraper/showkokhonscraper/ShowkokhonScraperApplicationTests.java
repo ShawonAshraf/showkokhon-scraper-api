@@ -58,29 +58,29 @@ public class ShowkokhonScraperApplicationTests {
         assertEquals(merged.toString(), sampleMergedParsedData);
     }
 
-//    @Test
-//    public void apiClientReturnsSomething() {
-//        final String WEBSITE_ERROR = "Couldn't Fetch Data Due To WebSite Error";
-//        var client = new StarCineplexApiClient();
-//
-//        var bcity = client.fetch("Bashundhara Shopping Mall, Panthapath");
-//        var ss = client.fetch("Shimanto Shambhar, Dhanmondi 2");
-//
-//        var bbClient = new BlockbusterCinemasClient();
-//        var jfp = bbClient.bulkFetch();
-//
-//        assertTrue(!bcity.MSG.equals(WEBSITE_ERROR));
-//        assertTrue(!ss.MSG.equals(WEBSITE_ERROR));
-//        assertTrue(!jfp.MSG.equals(WEBSITE_ERROR));
-//    }
+    @Test
+    public void apiClientReturnsSomething() {
+        final String WEBSITE_ERROR = "Couldn't Fetch Data Due To WebSite Error";
+        var client = new StarCineplexApiClient();
 
-//    @Test
-//    public void blockbusterClientReturnsReponse() {
-//        var client = new BlockbusterCinemasClient();
-//        var res = client.bulkFetch();
-//
-//        assertEquals(res.STATUS_CODE, 200);
-//    }
+        var bcity = client.fetch("Bashundhara Shopping Mall, Panthapath");
+        var ss = client.fetch("Shimanto Shambhar, Dhanmondi 2");
+
+        var bbClient = new BlockbusterCinemasClient();
+        var jfp = bbClient.bulkFetch();
+
+        assertTrue(!bcity.MSG.equals(WEBSITE_ERROR));
+        assertTrue(!ss.MSG.equals(WEBSITE_ERROR));
+        assertTrue(!jfp.MSG.equals(WEBSITE_ERROR));
+    }
+
+    @Test
+    public void blockbusterClientReturnsReponse() {
+        var client = new BlockbusterCinemasClient();
+        var res = client.bulkFetch();
+
+        assertEquals(res.STATUS_CODE, 200);
+    }
 
     @Test
     public void getFormattedDateReturnsProperFormat() {
