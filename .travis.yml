@@ -3,5 +3,3 @@ jdk: openjdk11
 
 script:
   - ./mvnw clean package
-  - gem install dpl
-  - dpl --provider=heroku --app=$DPL_APP_NAME --api-key=$DPL_API_KEY
