@@ -3,22 +3,6 @@
 
 Scraps movie schedules from Star Cineplex and Blockbuster Cinemas websites.
 
-## mvn Package
-
-From the command line
-```bash
-maven install com.showkokhon.scraper.showkokhon-scraper
-```
-
-Inside the `pom.xml` file of your project
-```xml
-<dependency>
-	<groupId>com.showkokhon.scraper</groupId>
-	<artifactId>showkokhon-scraper</artifactId>
-	<version>1.0.0.RELEASE</version>
-</dependency>
-```
-
 ## Running locally
 - Clone the repo.
 - `cd` into the dir and run : 
