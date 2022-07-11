@@ -14,7 +14,7 @@ public class BlockbusterCinemasClient {
     Logger logger = LoggerFactory.getLogger(BlockbusterCinemasClient.class);
     // generic error message
     private final String WEBSITE_ERROR = "Couldn't Fetch Data Due To WebSite Error";
-    private final String url = "https://blockbusterbd.com/schedule.php";
+    private final String url = "https://blockbusterbd.com/schedule";
 
     private final ArrayList<String> dates;
 
@@ -26,7 +26,7 @@ public class BlockbusterCinemasClient {
     public BasicScraperResponse fetch(String date) {
         logger.info("Fetching data from Blockbuster for " + date);
         try {
-            var requestString = String.format("%s?request=%s", url, date);
+            var requestString = String.format("%s?schedule=%s", url, date);
             var response = Unirest.get(requestString).asString();
 
             logger.trace(response.getStatusText());
